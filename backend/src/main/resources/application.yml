@@ -1,0 +1,8 @@
+server:
+  port: 8081
+
+agentic-automation:
+  datasource:
+    url: ${AGENTIC_AUTOMATION_DB_URL:jdbc:postgresql://localhost:5432/agentic_automation}
+    username: ${AGENTIC_AUTOMATION_DB_USER:agentic_automation}
+    password: ${AGENTIC_AUTOMATION_DB_PASSWORD:agentic_automation}

@@ -1,0 +1,32 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Local Postgres for manual/CLI use of the persistence module. The persistence module's own
+# tests don't use this — they spin up an ephemeral Testcontainers Postgres instead — this is only
+# for running something against a database that survives between runs (e.g. a future CLI/backend
+# main class, or poking around with psql).
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: agentic_automation
+      POSTGRES_USER: agentic_automation
+      POSTGRES_PASSWORD: agentic_automation
+    ports:
+      - "5432:5432"
+    volumes:
+      - agentic-automation-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  agentic-automation-postgres-data:
